@@ -1,0 +1,46 @@
+---
+#common configurations
+mp:
+  openapi:
+    extensions:
+      smallrye:
+        info:
+          title: "Book Microservice"
+          version: "1.0"
+          description: "Book Microservice API documentation"
+          contact:
+            name: "Quarkus"
+            url: "https://quarkus.io/"
+
+#dev configurations
+"%dev":
+  quarkus:
+    http:
+      port: 8667
+    banner:
+      enabled: true
+    rest-client:
+        number-ms:
+           uri: "http://localhost:7667"
+
+#test configurations
+"%test":
+  quarkus:
+    http:
+      port: 8668
+    live-reload:
+      enabled: false
+    banner:
+      enabled: false
+
+
+#prod configurations
+"%prod":
+  quarkus:
+    http:
+      port: 8669
+    banner:
+      enabled: true
+    rest-client:
+      number-ms:
+        uri: "http://localhost:7667"

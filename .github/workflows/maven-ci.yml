@@ -1,0 +1,52 @@
+name: Maven CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Java 21
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      # Cache Maven dependencies
+      - name: Cache Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # Run Maven tests
+      - name: Run tests
+        run: mvn clean test --batch-mode
+
+  # Enforce successful checks for merging PRs on multiple branches
+  branch_protection_rules:
+    - pattern: main
+      required_status_checks:
+        checks:
+          - name: Maven CI
+    - pattern: develop
+      required_status_checks:
+        checks:
+          - name: Maven CI
+    - pattern: release
+      required_status_checks:
+        checks:
+          - name: Maven CI

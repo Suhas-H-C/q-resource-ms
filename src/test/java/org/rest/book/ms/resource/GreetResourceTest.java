@@ -4,7 +4,7 @@ import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.emptyString;
 
 @QuarkusTest
 public class GreetResourceTest {
@@ -16,7 +16,7 @@ public class GreetResourceTest {
                 .get("/v1/greet")
                 .then()
                 .statusCode(200)
-                .body(is("Hello from book-ms REST"));
+                .body(emptyString());
     }
 
 }

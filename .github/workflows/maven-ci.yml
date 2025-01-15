@@ -3,7 +3,7 @@ name: Maven CI
 on:
   pull_request:
     branches:
-      - main
+      - master
       - develop
       - release
 
@@ -38,7 +38,7 @@ jobs:
 
   # Enforce successful checks for merging PRs on multiple branches
   branch_protection_rules:
-    - pattern: main
+    - pattern: master
       required_status_checks:
         checks:
           - name: Maven CI

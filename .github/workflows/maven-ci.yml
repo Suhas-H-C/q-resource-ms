@@ -35,18 +35,3 @@ jobs:
       # Run Maven tests
       - name: Run tests
         run: mvn clean test --batch-mode
-
-  # Enforce successful checks for merging PRs on multiple branches
-  branch_protection_rules:
-    - pattern: master
-      required_status_checks:
-        checks:
-          - name: Maven CI
-    - pattern: develop
-      required_status_checks:
-        checks:
-          - name: Maven CI
-    - pattern: release
-      required_status_checks:
-        checks:
-          - name: Maven CI

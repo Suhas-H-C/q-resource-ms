@@ -27,8 +27,9 @@ quarkus:
     rest-client:
         number-ms:
            uri: "http://localhost:7667"
-        greet-ms:
-           uri: "http://localhost:6070"
+    smallrye-graphql-client:
+      greet-ms:
+         url: "http://localhost:6070/graphql"
 
 #test configurations
 "%test":
@@ -51,5 +52,6 @@ quarkus:
     rest-client:
       number-ms:
         uri: "http://localhost:7667"
+    smallrye-graphql-client:
       greet-ms:
-        uri: "http://localhost:6070"
+        url: "http://localhost:6070/graphql"

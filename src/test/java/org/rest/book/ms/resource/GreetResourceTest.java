@@ -11,6 +11,7 @@ public class GreetResourceTest {
     @Test
     void should_greet_user_when_triggered() {
         given()
+                .queryParam("name", "book-ms")
                 .when()
                 .get("/v1/greet")
                 .then()

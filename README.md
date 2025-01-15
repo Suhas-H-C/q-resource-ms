@@ -63,4 +63,5 @@ Easily start your REST Web Services
 
 ### Create a book
 curl -X POST http://localhost:8667/v1/save -d "title=Java&author=quarkus&yearOfPublication=2018&genre=IT"
+book-ms calls number-ms and greet-ms for APIs work. It has fault tolerance and circuit breaker implemented.
 

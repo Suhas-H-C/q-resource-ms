@@ -2,7 +2,6 @@ package org.rest.book.ms.resource;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
-import org.rest.book.ms.model.IsbnNumber;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -13,13 +12,10 @@ public class BookResourceTest {
 
     @Test
     void should_create_a_book_when_data_is_passed() {
-
         var title = "The Lord of the Rings";
         var author = "J.R.R. Tolkien";
         var genre = "Fantasy";
         var yearOfPublication = 1954;
-
-
         given()
                 .formParam("title", title)
                 .formParam("author", author)

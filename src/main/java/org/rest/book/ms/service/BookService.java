@@ -4,6 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
+import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 import org.rest.book.ms.model.Book;
@@ -35,6 +36,7 @@ public class BookService {
         return book;
     }
 
+    @Timeout(2000)
     @Retry(maxRetries = 2, delay = 3000)
     @Fallback(fallbackMethod = "fallbackIsbnNumber")
     public IsbnNumber fetchIsbnNumberOrFallBack() {

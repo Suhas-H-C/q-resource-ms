@@ -25,28 +25,20 @@ public class EmployeeService {
         this.port = port;
     }
 
+    @Timeout(3000)
+    @Retry(maxRetries = 2, delay = 1000)
+    @Fallback(fallbackMethod = "fallBackEmployees")
     public List<Employee> allEmployees() {
-        return getAllEmployees();
-    }
-
-    public Employee getEmployeeById(Integer id) {
-        return getById(id);
+        log.info("Calling greet-ms for employees");
+        return port.allEmployees();
     }
 
     @Timeout(3000)
     @Retry(maxRetries = 2, delay = 1000)
     @Fallback(fallbackMethod = "fallBackEmployeeById")
-    public Employee getById(Integer id) {
+    public Employee getEmployeeById(Integer id) {
         log.info("Calling greet-ms for employee by Id " + id);
         return port.employeeById(id);
-    }
-
-    @Timeout(3000)
-    @Retry(maxRetries = 2, delay = 1000)
-    @Fallback(fallbackMethod = "fallBackEmployees")
-    public List<Employee> getAllEmployees() {
-        log.info("Calling greet-ms for employees");
-        return port.allEmployees();
     }
 
     public List<Employee> fallBackEmployees() {

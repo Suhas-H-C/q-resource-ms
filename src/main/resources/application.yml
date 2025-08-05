@@ -22,6 +22,16 @@ quarkus:
   quarkus:
     http:
       port: 8667
+    datasource:
+      db-kind: mysql
+      username: root
+      password: root
+      jdbc:
+        url: jdbc:mysql://localhost:3306/adventure_works
+    hibernate-orm:
+      database:
+        default-schema: adventure_works
+        generation: update
     banner:
       enabled: true
     rest-client:
@@ -36,6 +46,9 @@ quarkus:
   quarkus:
     http:
       port: 8668
+    hibernate-orm:
+      database:
+        generation: update
     live-reload:
       enabled: false
     banner:
@@ -49,6 +62,16 @@ quarkus:
       port: 8669
     banner:
       enabled: true
+    datasource:
+      db-kind: mysql
+      username: root
+      password: root
+      jdbc:
+        url: jdbc:mysql://localhost:3306/adventure_works #changeit
+    hibernate-orm:
+      database:
+        default-schema: adventure_works
+        generation: update
     rest-client:
       number-ms:
         uri: "http://localhost:7667"

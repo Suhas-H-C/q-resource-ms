@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
-class EmployeeResourceTest {
+public class EmployeeResourceTest {
 
     @Test
     void should_return_all_employees() {

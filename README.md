@@ -1,67 +1,111 @@
-# book-ms
+# Quarkus
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## MEAP - Manning Early Access Program
+A book can take a year or more to write, so how do you learn that hot new
+technology today? The answer is MEAP, the Manning Early Access Program. In
+MEAP, you read a book chapter-by-chapter while it's being written and get the final eBook as soon as it's finished.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+---
+### Generating Quarkus application
+1. Generating Quarkus application using command line and maven plugin
+```bash
+mvn -U io.quarkus:quarkus-maven-plugin:create \
+  -DprojectGroupId=org.rest.number.ms \
+  -DprojectArtifactId=number-ms \
+  -DclassName="org.rest.number.ms.NumberResource" \
+  -Dpath="/v1/numbers" \
+  -Dextensions="resteasy-jsonb,smallrype-openapi"
+```
+2. Generating Quarkus application using Quarkus CLI
 
-## Running the application in dev mode
+Quarkus CLI provides similar approaches for both maven and gradle
+```bash
+$ quarkus create app org.acme:quarkus-in-action -P 3.5.0
+➥ --extension resteasy-reactive
+```
+3. Generating Quarkus application using code.quarkus.io
 
-You can run your application in dev mode that enables live coding using:
+GUI where you can create quarkus applications
 
-```shell script
+---
+### Dependencies with usages
+
+|Dependency| Usage |
+|----------|-------|
+|quarkus-arc|Implicitly added for providing dependency injection|
+|quarkus-config-yaml|Support for yaml based configurational files|
+|quarkus-smallrye-openapi|API documentation|
+|quarkus-smallrye-falut-tolerance|Fault tolerance and fallback for external calls|
+|quarkus-smallrye-graphql-client|Consuming from a graphql service|
+|quarkus-rest-client|Registering external REST clients|
+|quarkus-rest-client-jsonb|Processing and converting response data into JSON format (Serialization/Deserialization)|
+|quarkus-rest|Building HTTP REST APIs with reactive performance|
+|quarkus-rest-jsonb|Processing and converting both request and response data into JSON format (Serialization/Deserialization) reactive|
+|quarkus-resteasy|Building HTTP REST APIs|
+|quarkus-resteasy-jsonb|Processing and converting both request and response data into JSON format (Serialization/Deserialization)|
+|quarkus-junit5|Writing unit test|
+|rest-assured|Writing IT test|
+
+---
+
+### Quarkus BOM (Bill of Materials)
+
+The BOM is always versioned per a specific Quarkus platform
+version and contains all platform extensions together with other useful artifacts (e.g., for
+testing) with the correct versions. Using the BOM also ensures that all utilized extensions
+are guaranteed to work together.
+
+
+
+---
+### Packaging and Structures
+
+Quarkus using small footprints while generating JAR files when below command is executed
+```bash
+mvn clean install
+``` 
+- Executable jar will be placed in /quarkus-app folder where the dependencies and other resources are separated and the jar contents can be viewed with below command
+```bash
+jar tf quarkus-run.jar
+```
+- The standard maven jar output will be ommitted on to target folder which is no executable. However you can build a uber jar if needed using below command
+```bash
+mvn clean install -Dquarkus-package-type=uber-jar
+```
+The above configuration can also be specified on the properties file
+```bash
+quarkus.package.type=uber-jar
+```
+---
+### Running a Quarkus application
+
+1. Using command line
+```bash
 ./mvnw quarkus:dev
 ```
-
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
+Execute the below command to re-generate and load maven wrapper files.
+```bash
+mvn -N io.takari:maven:wrapper
 ```
-
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
+2. Using Quarkus CLI
+```bash
+quarkus dev
 ```
+---
+### Building a Native Executable
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+Native binary images that are platform dependent however leaves lesser footprints and takes some time for getting created using below command
 
-## Creating a native executable
+We use GraalVM for creating such native binaries
 
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
+```bash
+./mvnw package -Pnative
 ```
+### Plugins with usages
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/book-ms-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
-
-### Create a book
-curl -X POST http://localhost:8667/v1/save -d "title=Java&author=quarkus&yearOfPublication=2018&genre=IT"
-book-ms calls number-ms and greet-ms for APIs to work. It has fault tolerance and circuit breaker implemented.
-
+|Plugins|Usage|
+|-------|-----|
+|quarkus-maven-plugin|Build, Launch Dev Mode, Create New Project, List add and remove extensions|
+|quarkus-compiler-plugin|Compliation purposes|
+|maven-surefile-plugin|Running and Reporting Unit Tests|
+|maven-failsafe-plugin|Executing IT tests during build phase|

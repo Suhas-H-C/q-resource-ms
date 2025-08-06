@@ -4,33 +4,33 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.rest.resource.ms.entity.Artist;
-import org.rest.resource.ms.service.ArtistService;
+import org.rest.resource.ms.entity.Student;
+import org.rest.resource.ms.service.StudentService;
 
 import java.util.List;
 
-@Path("/artists")
-public class ArtistResource {
+@Path("/std")
+public class StudentResource {
 
     @Inject
-    private ArtistService service;
+    private StudentService service;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Artist> getAllArtists() {
-        return service.allArtist();
+    public List<Student> getAllArtists() {
+        return service.allStudents();
     }
 
     @GET
     @Path("/{id}")
-    public Artist getArtistById(@PathParam("id") Integer id) {
-        return service.getArtistById(id);
+    public Student getArtistById(@PathParam("id") Integer id) {
+        return service.getStudentById(id);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(Artist artist) {
+    public Response save(Student artist) {
         return Response
                 .status(201)
                 .entity(service.persist(artist))
@@ -39,7 +39,7 @@ public class ArtistResource {
 
     @DELETE
     @Path("/{id}")
-    public Response remove(@PathParam("id") Integer id){
+    public Response remove(@PathParam("id") Integer id) {
         return Response
                 .status(204)
                 .entity(service.remove(id))

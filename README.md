@@ -43,6 +43,10 @@ GUI where you can create quarkus applications
 |quarkus-rest-jsonb|Processing and converting both request and response data into JSON format (Serialization/Deserialization) reactive|
 |quarkus-resteasy|Building HTTP REST APIs|
 |quarkus-resteasy-jsonb|Processing and converting both request and response data into JSON format (Serialization/Deserialization)|
+|quarkus-agroal|Hikari Configurations|
+|quarkus-hibernate-orm-panache|Entity Configurations|
+|quarkus-jdbc-mysql|mySQL Driver|
+|quarkus-jdbc-postgres|postgres Driver|
 |quarkus-junit5|Writing unit test|
 |rest-assured|Writing IT test|
 

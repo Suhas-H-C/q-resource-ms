@@ -5,14 +5,21 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.jboss.logging.Logger;
 import org.rest.resource.ms.entity.Artist;
+import org.rest.resource.ms.exception.ArtistNotFoundException;
 
 import java.util.List;
+
+import static java.util.Objects.isNull;
 
 @ApplicationScoped
 public class ArtistService {
 
+    private final Logger log;
+
     @Inject
-    private Logger log;
+    public ArtistService(Logger log) {
+        this.log = log;
+    }
 
     public List<Artist> allArtist() {
         log.info("fetching all artists");
@@ -29,5 +36,14 @@ public class ArtistService {
         log.info("persisting artist...");
         Artist.persist(artist);
         return true;
+    }
+
+    @Transactional
+    public boolean remove(Integer id) {
+        if (isNull(Artist.findById(id))) {
+            throw new ArtistNotFoundException("No data found for provided id " + id);
+        } else {
+            return Artist.deleteById(id);
+        }
     }
 }

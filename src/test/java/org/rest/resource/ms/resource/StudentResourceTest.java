@@ -2,29 +2,39 @@ package org.rest.resource.ms.resource;
 
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
-import jakarta.ws.rs.core.MediaType;
-import org.eclipse.microprofile.graphql.Ignore;
 import org.junit.jupiter.api.Test;
-import org.rest.resource.ms.entity.Student;
 
 import static io.restassured.RestAssured.given;
+import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.hamcrest.Matchers.*;
+import static org.rest.resource.ms.util.StudentTestUtil.studentJohn;
 
 @QuarkusTest
 @TestTransaction
-class StudentResourceTest {
+public class StudentResourceTest {
 
     @Test
     void should_save_student() {
-        Student std = new Student("John",3);
         given()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(std)
+                .contentType(APPLICATION_JSON)
+                .body(studentJohn())
                 .when()
                 .post("/std")
                 .then()
                 .statusCode(201)
-                .body(notNullValue());
+                .body(equalTo("true"));
+    }
+
+    @Test
+    void should_return_student_when_Id_is_passed() {
+        given()
+                .when()
+                .get("/std/1")
+                .then()
+                .statusCode(200)
+                .body("id", equalTo(1))
+                .body("name", equalTo("Kevin"))
+                .body("standard", equalTo(2));
     }
 
     @Test
@@ -37,6 +47,16 @@ class StudentResourceTest {
                 .all()
                 .statusCode(200)
                 .body(hasItems());
+    }
+
+    @Test
+    void should_delete_student_when_Id_is_passed() {
+        given()
+                .when()
+                .delete("/std/51")
+                .then()
+                .statusCode(204)
+                .body(not(empty()));
     }
 
     @Test

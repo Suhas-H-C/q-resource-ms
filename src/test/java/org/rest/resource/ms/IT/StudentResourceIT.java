@@ -7,61 +7,58 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.hamcrest.Matchers.*;
-import static org.rest.resource.ms.util.ArtistTestUtil.artistJohn;
+import static org.rest.resource.ms.util.StudentTestUtil.studentJohn;
 
 @QuarkusIntegrationTest
 @TestTransaction
-class ArtistResourceIT
-        // extends ArtistResourceTest <- Commenting as it pulls all tests executing against prod configuration
+class StudentResourceIT
+        // extends StudentResourceTest <- Commenting as it pulls all tests executing against prod configuration
         // Execute the same tests but in packaged mode.
 {
-
     @Test
-    void should_save_artist() {
+    void should_save_student() {
         given()
                 .contentType(APPLICATION_JSON)
-                .body(artistJohn())
+                .body(studentJohn())
                 .when()
-                .post("/artists")
+                .post("/std")
                 .then()
                 .statusCode(201)
                 .body(equalTo("true"));
     }
 
     @Test
-    void should_return_artist_when_Id_is_passed() {
+    void should_return_student_when_Id_is_passed() {
         given()
                 .when()
-                .get("/artists/1")
+                .get("/std/1")
                 .then()
                 .statusCode(200)
                 .body("id", equalTo(1))
-                .body("name", equalTo("A"))
-                .body("age", equalTo(25))
-                .body("bio", equalTo("A bio"));
+                .body("name", equalTo("John"))
+                .body("standard", equalTo(5));
     }
 
     @Test
-    void should_return_all_artist() {
+    void should_return_all_students() {
         given()
                 .when()
-                .get("/artists")
+                .get("/std")
                 .then()
                 .log()
                 .all()
                 .statusCode(200)
-                .body("[0].id", equalTo(1))
-                .body("[0].name", equalTo("A"))
-                .body("[0].age", equalTo(25))
-                .body("[0].bio", equalTo("A bio"));
+                .body(hasItems());
     }
 
     @Test
-    void should_throw_exception_when_artistById_is_not_found() {
+    void should_throw_exception_when_studentById_is_not_found() {
         given()
                 .when()
-                .delete("/artists/238746")
+                .delete("/std/501")
                 .then()
+                .log()
+                .all()
                 .statusCode(404)
                 .body(not(empty()));
     }

@@ -4,7 +4,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.rest.resource.ms.entity.Student;
+import org.rest.resource.ms.pojo.Student;
 import org.rest.resource.ms.service.StudentService;
 
 import java.util.List;
@@ -17,23 +17,23 @@ public class StudentResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Student> getAllArtists() {
+    public List<Student> getAllStudents() {
         return service.allStudents();
     }
 
     @GET
     @Path("/{id}")
-    public Student getArtistById(@PathParam("id") Integer id) {
+    public Student getStudentsById(@PathParam("id") Integer id) {
         return service.getStudentById(id);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(Student artist) {
+    public Response save(Student student) {
         return Response
                 .status(201)
-                .entity(service.persist(artist))
+                .entity(service.persist(student))
                 .build();
     }
 

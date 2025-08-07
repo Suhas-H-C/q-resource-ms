@@ -11,7 +11,7 @@ import static org.rest.resource.ms.util.StudentTestUtil.studentJohn;
 
 @QuarkusTest
 @TestTransaction
-class StudentResourceTest {
+public class StudentResourceTest {
 
     @Test
     void should_save_student() {

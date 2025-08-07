@@ -48,7 +48,7 @@ GUI where you can create quarkus applications
 | quarkus-jdbc-mysql               | mySQL Driver                                                                                                       |
 | quarkus-jdbc-postgres            | postgres Driver                                                                                                    |
 | quarkus-jdbc-h2                  | H2 Driver                                                                                                          |
-|wiremock| Stubs for testing external calls                                                                                      |
+| wiremock                         | Stubs for testing external calls                                                                                      |
 | quarkus-junit5                   | Writing unit test                                                                                                  |
 | rest-assured                     | Writing IT test                                                                                                    |
 

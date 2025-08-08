@@ -1,4 +1,4 @@
-package org.rest.resource.ms.pojo;
+package org.rest.resource.ms.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;

@@ -1,6 +1,6 @@
 package org.rest.resource.ms.util;
 
-import org.rest.resource.ms.pojo.Student;
+import org.rest.resource.ms.entity.Student;
 
 public class StudentTestUtil {
 

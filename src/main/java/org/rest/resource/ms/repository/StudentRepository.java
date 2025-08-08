@@ -3,14 +3,14 @@ package org.rest.resource.ms.repository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.rest.resource.ms.pojo.Student;
+import org.rest.resource.ms.entity.Student;
 
 import java.util.List;
 
 @ApplicationScoped
 public class StudentRepository {
 
-    @PersistenceContext(unitName = "std")
+    @PersistenceContext
     EntityManager em;
 
     public void save(Student student) {

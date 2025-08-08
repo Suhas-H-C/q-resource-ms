@@ -5,7 +5,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.jboss.logging.Logger;
 import org.rest.resource.ms.exception.StudentNotFoundException;
-import org.rest.resource.ms.pojo.Student;
+import org.rest.resource.ms.entity.Student;
 import org.rest.resource.ms.repository.StudentRepository;
 
 import java.util.List;

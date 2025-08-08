@@ -1,11 +1,20 @@
 package org.rest.resource.ms.pojo;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-public class Student extends PanacheEntity {
+public class Student extends PanacheEntityBase {
 
+    public Long id;
     private String name;
     private Integer standard;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

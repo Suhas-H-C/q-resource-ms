@@ -8,6 +8,9 @@
     <entity class="org.rest.resource.ms.entity.Artist">
         <table name="artist"/>
         <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
             <basic name="name"/>
             <basic name="bio"/>
             <basic name="age"/>
@@ -17,6 +20,9 @@
     <entity class="org.rest.resource.ms.pojo.Student">
         <table name="student"/>
         <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
             <basic name="name"/>
             <basic name="standard"/>
         </attributes>

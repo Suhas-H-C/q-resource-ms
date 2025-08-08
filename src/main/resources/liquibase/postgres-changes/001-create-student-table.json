@@ -1,0 +1,47 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "001-create-student-table",
+        "author": "Suhas H C",
+        "changes": [
+          {
+            "createTable": {
+              "tableName": "student",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "type": "BIGSERIAL",
+                    "constraints": {
+                      "primaryKey": true,
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "varchar(225)",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                },
+                {
+                  "column": {
+                    "name": "standard",
+                    "type": "bigint",
+                    "constraints": {
+                      "nullable": false
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

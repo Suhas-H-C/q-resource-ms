@@ -30,25 +30,27 @@ GUI where you can create quarkus applications
 ---
 ### Dependencies with usages
 
-|Dependency| Usage |
-|----------|-------|
-|quarkus-arc|Implicitly added for providing dependency injection|
-|quarkus-config-yaml|Support for yaml based configurational files|
-|quarkus-smallrye-openapi|API documentation|
-|quarkus-smallrye-falut-tolerance|Fault tolerance and fallback for external calls|
-|quarkus-smallrye-graphql-client|Consuming from a graphql service|
-|quarkus-rest-client|Registering external REST clients|
-|quarkus-rest-client-jsonb|Processing and converting response data into JSON format (Serialization/Deserialization)|
-|quarkus-rest|Building HTTP REST APIs with reactive performance|
-|quarkus-rest-jsonb|Processing and converting both request and response data into JSON format (Serialization/Deserialization) reactive|
-|quarkus-resteasy|Building HTTP REST APIs|
-|quarkus-resteasy-jsonb|Processing and converting both request and response data into JSON format (Serialization/Deserialization)|
-|quarkus-agroal|Hikari Configurations|
-|quarkus-hibernate-orm-panache|Entity Configurations|
-|quarkus-jdbc-mysql|mySQL Driver|
-|quarkus-jdbc-postgres|postgres Driver|
-|quarkus-junit5|Writing unit test|
-|rest-assured|Writing IT test|
+| Dependency                       | Usage                                                                                                              |
+|----------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| quarkus-arc                      | Implicitly added for providing dependency injection                                                                |
+| quarkus-config-yaml              | Support for yaml based configurational files                                                                       |
+| quarkus-smallrye-openapi         | API documentation                                                                                                  |
+| quarkus-smallrye-falut-tolerance | Fault tolerance and fallback for external calls                                                                    |
+| quarkus-smallrye-graphql-client  | Consuming from a graphql service                                                                                   |
+| quarkus-rest-client              | Registering external REST clients                                                                                  |
+| quarkus-rest-client-jsonb        | Processing and converting response data into JSON format (Serialization/Deserialization)                           |
+| quarkus-rest                     | Building HTTP REST APIs with reactive performance                                                                  |
+| quarkus-rest-jsonb               | Processing and converting both request and response data into JSON format (Serialization/Deserialization) reactive |
+| quarkus-resteasy                 | Building HTTP REST APIs                                                                                            |
+| quarkus-resteasy-jsonb           | Processing and converting both request and response data into JSON format (Serialization/Deserialization)          |
+| quarkus-agroal                   | Hikari Configurations                                                                                              |
+| quarkus-hibernate-orm-panache    | Entity Configurations                                                                                              |
+| quarkus-jdbc-mysql               | mySQL Driver                                                                                                       |
+| quarkus-jdbc-postgres            | postgres Driver                                                                                                    |
+| quarkus-jdbc-h2                  | H2 Driver                                                                                                          |
+| wiremock                         | Stubs for testing external calls                                                                                      |
+| quarkus-junit5                   | Writing unit test                                                                                                  |
+| rest-assured                     | Writing IT test                                                                                                    |
 
 ---
 

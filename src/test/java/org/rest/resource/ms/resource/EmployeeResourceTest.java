@@ -27,7 +27,7 @@ public class EmployeeResourceTest {
                 .then()
                 .statusCode(200)
                 .body("id", is(1))
-                .body("name", is("Employee1"));
+                .body("name", is("A"));
     }
 
     @Test

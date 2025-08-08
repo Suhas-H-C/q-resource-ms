@@ -112,6 +112,6 @@ We use GraalVM for creating such native binaries
 |Plugins|Usage|
 |-------|-----|
 |quarkus-maven-plugin|Build, Launch Dev Mode, Create New Project, List add and remove extensions|
-|quarkus-compiler-plugin|Compliation purposes|
+|quarkus-compiler-plugin|Compilation purposes|
 |maven-surefile-plugin|Running and Reporting Unit Tests|
 |maven-failsafe-plugin|Executing IT tests during build phase|

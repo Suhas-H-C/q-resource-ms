@@ -12,7 +12,8 @@
                 {
                   "column": {
                     "name": "id",
-                    "type": "BIGINT AUTO_INCREMENT",
+                    "type": "BIGINT",
+                    "autoIncrement": true,
                     "constraints": {
                       "primaryKey": true,
                       "nullable": false
@@ -40,7 +41,7 @@
                 {
                   "column": {
                     "name": "age",
-                    "type": "bigint",
+                    "type": "numeric",
                     "constraints": {
                       "nullable": false
                     }

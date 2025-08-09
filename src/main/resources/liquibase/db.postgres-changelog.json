@@ -1,0 +1,10 @@
+{
+  "databaseChangeLog": [
+    {
+      "includeAll": {
+        "path": "postgres-changes",
+        "relativeToChangelogFile": true
+      }
+    }
+  ]
+}

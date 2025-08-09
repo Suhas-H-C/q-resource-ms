@@ -51,6 +51,7 @@ public class StudentService {
         if (isNull(student)) {
             throw new StudentNotFoundException("No data found for provided id " + id);
         } else {
+            log.info("Removing student with id " + id);
             return repository.deleteStudent(student);
         }
     }

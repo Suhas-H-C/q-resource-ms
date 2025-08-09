@@ -1,9 +1,10 @@
 package org.rest.resource.ms.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
-public class Artist extends PanacheEntity {
+public class Artist extends PanacheEntityBase {
 
+    public Long id;
     public String name;
     public String bio;
     public int age;
@@ -15,6 +16,14 @@ public class Artist extends PanacheEntity {
         this.name = name;
         this.bio = bio;
         this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

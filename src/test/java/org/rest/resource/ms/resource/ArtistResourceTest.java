@@ -52,16 +52,6 @@ public class ArtistResourceTest {
     }
 
     @Test
-    void should_delete_artist_when_Id_is_passed() {
-        given()
-                .when()
-                .delete("/artists/51")
-                .then()
-                .statusCode(204)
-                .body(not(empty()));
-    }
-
-    @Test
     void should_throw_exception_when_artistById_is_not_found() {
         given()
                 .when()

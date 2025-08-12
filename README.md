@@ -39,6 +39,9 @@ GUI where you can create quarkus applications
 | quarkus-smallrye-graphql-client  | Consuming from a graphql service                                                                                   |
 | quarkus-rest-client              | Registering external REST clients                                                                                  |
 | quarkus-rest-client-jsonb        | Processing and converting response data into JSON format (Serialization/Deserialization)                           |
+| quarkus-freemarker               | Provides freemarker templates for email body                                                                       |
+| quarkus-mailer                   | Provides emailing capabilities                                                                                     |
+| quarkus-jberet                   | Batch processing capabilities                                                                                      |
 | quarkus-rest                     | Building HTTP REST APIs with reactive performance                                                                  |
 | quarkus-rest-jsonb               | Processing and converting both request and response data into JSON format (Serialization/Deserialization) reactive |
 | quarkus-resteasy                 | Building HTTP REST APIs                                                                                            |
@@ -48,8 +51,9 @@ GUI where you can create quarkus applications
 | quarkus-jdbc-mysql               | mySQL Driver                                                                                                       |
 | quarkus-jdbc-postgres            | postgres Driver                                                                                                    |
 | quarkus-jdbc-h2                  | H2 Driver                                                                                                          |
-| wiremock                         | Stubs for testing external calls                                                                                      |
-| quarkus-junit5                   | Writing unit test                                                                                                  |
+| wiremock                         | Stubs for testing external calls                                                                                   |
+| quarkus-junit5                   | Writing unit test using Junit5                                                                                     |
+| quarkus-junit5-mockito           | Writing unit test using Junit5 and Mockito                                                                         |
 | rest-assured                     | Writing IT test                                                                                                    |
 
 ---
@@ -74,7 +78,7 @@ mvn clean install
 ```bash
 jar tf quarkus-run.jar
 ```
-- The standard maven jar output will be ommitted on to target folder which is no executable. However you can build a uber jar if needed using below command
+- The standard maven jar output will be ommitted on to target folder which is no executable. However, you can build a uber jar if needed using below command
 ```bash
 mvn clean install -Dquarkus-package-type=uber-jar
 ```
@@ -112,6 +116,6 @@ We use GraalVM for creating such native binaries
 |Plugins|Usage|
 |-------|-----|
 |quarkus-maven-plugin|Build, Launch Dev Mode, Create New Project, List add and remove extensions|
-|quarkus-compiler-plugin|Compliation purposes|
+|quarkus-compiler-plugin|Compilation purposes|
 |maven-surefile-plugin|Running and Reporting Unit Tests|
 |maven-failsafe-plugin|Executing IT tests during build phase|

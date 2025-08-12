@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="artist-insert-job" xmlns="https://jakarta.ee/xml/ns/jakartaee" version="1.0">
+    <listeners>
+        <listener ref="artistJobListener" />
+    </listeners>
+    <step id="insert-artists-step">
+        <chunk item-count="100">
+            <reader ref="artistReader" />
+            <processor ref="artistProcessor" />
+            <writer ref="artistWriter" />
+        </chunk>
+    </step>
+</job>

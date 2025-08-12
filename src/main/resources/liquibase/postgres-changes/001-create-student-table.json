@@ -43,6 +43,20 @@
           }
         ]
       }
+    },
+    {
+      "changeSet": {
+        "id": "002-load-student-data",
+        "author": "Suhas H C",
+        "changes": [
+          {
+            "loadData": {
+              "file": "/liquibase/data/student.csv",
+              "tableName": "student"
+            }
+          }
+        ]
+      }
     }
   ]
 }

@@ -19,6 +19,7 @@ public class BookService {
     @Inject
     Logger log;
 
+    @Inject
     @RestClient
     NumberPort numberPort;
 

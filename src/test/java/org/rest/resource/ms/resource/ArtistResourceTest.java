@@ -42,8 +42,6 @@ public class ArtistResourceTest {
                 .when()
                 .get("/artists")
                 .then()
-                .log()
-                .all()
                 .statusCode(200)
                 .body("[0].id", equalTo(1))
                 .body("[0].name", equalTo("John"))
@@ -55,7 +53,7 @@ public class ArtistResourceTest {
     void should_throw_exception_when_artistById_is_not_found() {
         given()
                 .when()
-                .delete("/artists/501")
+                .delete("/artists/5001")
                 .then()
                 .statusCode(404)
                 .body(not(empty()));
